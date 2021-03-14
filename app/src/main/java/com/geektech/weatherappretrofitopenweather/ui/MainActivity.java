@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private ActivityMainBinding mainBinding;
     private Geocoder geocoder;
     private LocationManager locationManager;
-    
+
     private ProgressDialog dialog;
 
     @SuppressLint("ResourceType")
@@ -85,22 +85,20 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         mainBinding.currentLocation.setOnClickListener(v -> {
             if (hasPermissions()) {
-                // our app has permissions.
                 getLocation();
                 geocoder = new Geocoder(this, Locale.getDefault());
             } else {
-                //our app doesn't have permissions, So i m requesting permissions.
+                // app doesn't have permissions, So i m requesting permissions.
                 requestPermissionWithRationale();
             }
         });
 
         mainBinding.imageGetLocation.setOnClickListener(v -> {
             if (hasPermissions()) {
-                // our app has permissions.
                 getLocation();
                 geocoder = new Geocoder(this, Locale.getDefault());
             } else {
-                //our app doesn't have permissions, So i m requesting permissions.
+                // app doesn't have permissions, So i m requesting permissions.
                 requestPermissionWithRationale();
             }
         });
@@ -111,11 +109,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected void onStart() {
         super.onStart();
         if (hasPermissions()) {
-            // our app has permissions.
             getLocation();
             geocoder = new Geocoder(this, Locale.getDefault());
         } else {
-            //our app doesn't have permissions, So i m requesting permissions.
+            // app doesn't have permissions, So i m requesting permissions.
             requestPermissionWithRationale();
         }
     }
@@ -508,16 +505,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 allowed = allowed && (res == PackageManager.PERMISSION_GRANTED);
             }
         } else {
-            // if user not granted permissions.
+            // if user not granted permissions
             allowed = false;
         }
 
         if (allowed) {
-            //user granted all permissions we can perform our task.
+            //user granted all permissions we can perform our task
             getLocation();
             geocoder = new Geocoder(this, Locale.getDefault());
         } else {
-            // giving warning to user that they haven't granted permissions.
+            // giving warning to user that user haven't granted permissions
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     Toast.makeText(this, "GPS(Location) Permissions denied.", Toast.LENGTH_SHORT).show();
