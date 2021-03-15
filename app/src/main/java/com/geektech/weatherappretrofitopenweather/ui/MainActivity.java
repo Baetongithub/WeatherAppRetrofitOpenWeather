@@ -161,13 +161,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             if (city != null) {
                 mainBinding.editSearch.setText(city);
                 mainBinding.currentLocation.setText(city);
+                getWeather(city);
             } else {
                 mainBinding.editSearch.setText(address);
                 mainBinding.currentLocation.setText(address);
+                getWeather(address);
             }
             dialog.dismiss();
 
-            getWeather(address);
 
         } catch (IOException e) {
             Toast.makeText(this, "Something went wrong " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
