@@ -158,8 +158,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             String postalCode = addresses.get(0).getPostalCode();
             String knownName = addresses.get(0).getFeatureName();
 
-            mainBinding.editSearch.setText(address);
-            mainBinding.currentLocation.setText(address);
+            if (city != null) {
+                mainBinding.editSearch.setText(city);
+                mainBinding.currentLocation.setText(city);
+            } else {
+                mainBinding.editSearch.setText(address);
+                mainBinding.currentLocation.setText(address);
+            }
             dialog.dismiss();
 
             getWeather(address);
